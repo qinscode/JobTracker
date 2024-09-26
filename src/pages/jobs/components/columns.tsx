@@ -38,7 +38,7 @@ export const columns: ColumnDef<Job>[] = [
   },
 
   {
-    accessorKey: "job_title",
+    accessorKey: "JobTitle",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Job Title" />
     ),
@@ -46,49 +46,49 @@ export const columns: ColumnDef<Job>[] = [
       return (
         <div className="flex max-w-[200px] flex-col">
           <Link
-            to={`/job/${row.original.job_id}`}
+            to={`/job/${row.original.id}`}
             className="line-clamp-1 font-medium hover:underline"
           >
-            {row.getValue("job_title")}
+            {row.getValue("JobTitle")}
           </Link>
           <span className="line-clamp-1 text-xs font-medium text-muted-foreground">
-            {row.original.job_type}
+            {row.original.JobType}
           </span>
         </div>
       );
     },
   },
   {
-    accessorKey: "business_name",
+    accessorKey: "BusinessName",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Company" />
     ),
     cell: ({ row }) => (
       <div className="flex max-w-[190px]  flex-col">
         <span className="line-clamp-1 font-medium">
-          {row.getValue("business_name")}
+          {row.getValue("BusinessName")}
         </span>
         <span className="line-clamp-1 text-xs font-medium  text-muted-foreground">
-          {row.original.suburb} {row.original.area}
+          {row.original.Suburb} {row.original.Area}
         </span>
       </div>
     ),
   },
   {
-    accessorKey: "work_type",
+    accessorKey: "WorkType",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Work Type" />
     ),
     cell: ({ row }) => (
-      <Badge variant="secondary">{row.getValue("work_type")}</Badge>
+      <Badge variant="secondary">{row.getValue("WorkType")}</Badge>
     ),
   },
   {
-    accessorKey: "pay_range",
+    accessorKey: "PayRange",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Pay Range" />
     ),
-    cell: ({ row }) => <div>{row.getValue("pay_range")}</div>,
+    cell: ({ row }) => <div>{row.getValue("PayRange")}</div>,
   },
   {
     accessorKey: "status",
@@ -99,7 +99,7 @@ export const columns: ColumnDef<Job>[] = [
       // const status = row.getValue('status') as Job['status']
 
       const status = statuses.find(
-        (status) => status.value === (row.getValue("status") as Job["status"])
+        (Status) => Status.value === (row.getValue("Status") as Job["Status"])
       );
 
       if (!status) {
@@ -122,21 +122,21 @@ export const columns: ColumnDef<Job>[] = [
     },
   },
   {
-    accessorKey: "posted_date",
+    accessorKey: "PostedDate",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Posted Date" />
     ),
-    cell: ({ row }) => <div>{row.getValue("posted_date")}</div>,
+    cell: ({ row }) => <div>{row.getValue("PostedDate")}</div>,
   },
 
   {
-    accessorKey: "job_description",
+    accessorKey: "JobDescription",
     header: ({ column }) => (
       <DataTableColumnHeader column={column} title="Job Description" />
     ),
     cell: ({ row }) => (
       <div className="line-clamp-1 max-w-[180px]">
-        {row.getValue("job_description")}
+        {row.getValue("JobDescription")}
       </div>
     ),
   },

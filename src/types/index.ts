@@ -1,15 +1,15 @@
 // src/types/job.ts
 export interface Job {
-  job_id: string;
-  job_title: string;
-  business_name: string;
-  work_type: string;
-  job_type: string;
-  pay_range: string;
-  suburb: string;
-  area: string;
+  id: string;
+  JobTitle: string;
+  BusinessName: string;
+  WorkType: string;
+  JobType: string;
+  PayRange: string;
+  Suburb: string;
+  Area: string;
   url: string;
-  status:
+  Status:
     | "New"
     | "Pending"
     | "Archived"
@@ -20,6 +20,6 @@ export interface Job {
     | "TechnicalAssessment"
     | "Offered"
     | "Rejected";
-  posted_date: string;
-  job_description: string;
+  PostedDate: string;
+  JobDescription: string;
 }

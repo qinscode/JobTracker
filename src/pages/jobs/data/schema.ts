@@ -3,16 +3,16 @@ import { z } from "zod";
 // We're keeping a simple non-relational schema here.
 // IRL, you will have a schema for your data models.
 export const jobSchema = z.object({
-  job_id: z.string(),
-  job_title: z.string(),
-  business_name: z.string(),
-  work_type: z.string(),
-  job_type: z.string(),
-  pay_range: z.string(),
-  suburb: z.string(),
-  area: z.string(),
-  url: z.string(),
-  status: z.enum([
+  id: z.string(),
+  JobTitle: z.string(),
+  BusinessName: z.string(),
+  WorkType: z.string(),
+  JobType: z.string(),
+  PayRange: z.string(),
+  Suburb: z.string(),
+  Area: z.string(),
+  Url: z.string(),
+  Status: z.enum([
     "New",
     "Pending",
     "Applied",
@@ -25,8 +25,8 @@ export const jobSchema = z.object({
     "Pass",
     "Rejected",
   ]),
-  posted_date: z.string(),
-  job_description: z.string(),
+  PostedDate: z.string(),
+  JobDescription: z.string(),
 });
 
 export type Job = z.infer<typeof jobSchema>;

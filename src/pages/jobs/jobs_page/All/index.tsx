@@ -30,15 +30,15 @@ export default function AllJobs() {
 
       const validJobs = response.data.jobs.filter(
         (job: any) =>
-          job.job_id &&
-          job.job_title &&
-          job.business_name &&
-          job.work_type &&
-          job.job_type &&
-          job.pay_range &&
-          job.status &&
-          job.posted_date &&
-          job.job_description
+          job.id &&
+          job.JobTitle &&
+          job.BusinessName &&
+          job.WorkType &&
+          job.JobType &&
+          job.PayRange &&
+          job.Status &&
+          job.PostedDate &&
+          job.JobDescription
       );
 
       console.log(validJobs);

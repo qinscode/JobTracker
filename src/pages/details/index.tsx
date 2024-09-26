@@ -16,7 +16,7 @@ import { Job } from "@/types";
 import { Button } from "@/components/custom/button.tsx";
 import { useNavigate } from "react-router-dom";
 
-const statusColors: Record<Job["status"], string> = {
+const statusColors: Record<Job["Status"], string> = {
   New: "bg-green-100 text-green-800",
   Pending: "bg-yellow-100 text-yellow-800",
   Applied: "bg-blue-100 text-blue-800",
@@ -32,7 +32,7 @@ const statusColors: Record<Job["status"], string> = {
 export default function Details() {
   const { id } = useParams();
 
-  const job = jobs.find((job) => job!.job_id === id);
+  const job = jobs.find((job) => job!.id === id);
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -43,9 +43,7 @@ export default function Details() {
     <Layout>
       <Layout.Body>
         <div className="mb-2 flex items-center justify-between space-y-2">
-          <h1 className="text-2xl font-bold tracking-tight">
-            {job!.job_title}
-          </h1>
+          <h1 className="text-2xl font-bold tracking-tight">{job!.JobTitle}</h1>
 
           <div className="flex items-center space-x-2">
             <ThemeSwitch />
@@ -62,32 +60,32 @@ export default function Details() {
             <CardContent className="p-6 md:p-8">
               <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                 <h1 className="mb-2 text-3xl font-bold text-gray-900 dark:text-white">
-                  {job!.job_title}
+                  {job!.JobTitle}
                 </h1>
                 <Button className="mb-4 w-1/2">Apply Now</Button>
               </div>
 
               <h2 className="mb-4 text-xl text-gray-600 dark:text-gray-300">
-                {job!.business_name}
+                {job!.BusinessName}
               </h2>
               <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <MapPin className="mr-2" size={20} />
                   <span>
-                    {job!.suburb}, {job!.area}
+                    {job!.Suburb}, {job!.Area}
                   </span>
                 </div>
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <Briefcase className="mr-2" size={20} />
-                  <span>{job!.work_type}</span>
+                  <span>{job!.WorkType}</span>
                 </div>
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <DollarSign className="mr-2" size={20} />
-                  <span>{job!.pay_range}</span>
+                  <span>{job!.PayRange}</span>
                 </div>
                 <div className="flex items-center text-gray-600 dark:text-gray-300">
                   <Calendar className="mr-2" size={20} />
-                  <span>Posted {job!.posted_date}</span>
+                  <span>Posted {job!.PostedDate}</span>
                 </div>
               </div>
               <div className="mb-6 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -97,10 +95,10 @@ export default function Details() {
                   </h3>
                   <Badge
                     className={`${
-                      statusColors[job!.status]
+                      statusColors[job!.Status]
                     } pointer-events-none font-semibold`}
                   >
-                    {job!.status}
+                    {job!.Status}
                   </Badge>
                 </div>
 
@@ -109,7 +107,7 @@ export default function Details() {
                     Job Type
                   </h3>
                   <p className="text-gray-600 dark:text-gray-300">
-                    {job!.job_type}
+                    {job!.JobType}
                   </p>
                 </div>
               </div>
@@ -120,7 +118,7 @@ export default function Details() {
                 </h3>
                 <div
                   className="prose dark:prose-invert job-description max-w-none"
-                  dangerouslySetInnerHTML={{ __html: job!.job_description }}
+                  dangerouslySetInnerHTML={{ __html: job!.JobDescription }}
                 />
               </div>
             </CardContent>

@@ -7,7 +7,7 @@ interface RecentJob {
   userName: string | null;
   jobId: string;
   jobTitle: string;
-  status: number;
+  Status: number;
   createdAt: string;
   updatedAt: string;
 }
@@ -76,7 +76,7 @@ export function RecentlyAppliedJobs() {
             </p>
           </div>
           <div className="text-sm font-medium">
-            {statusMap[job.status] || "Unknown"}
+            {statusMap[job.Status] || "Unknown"}
           </div>
         </div>
       ))}

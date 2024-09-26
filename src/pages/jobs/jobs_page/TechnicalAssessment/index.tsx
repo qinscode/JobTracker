@@ -24,7 +24,7 @@ export default function TAJobs() {
         </div>
         <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
           <DataTable
-            data={jobs.filter((job) => job.status === "TechnicalAssessment")}
+            data={jobs.filter((job) => job.Status === "TechnicalAssessment")}
             columns={columns}
           />
         </div>
