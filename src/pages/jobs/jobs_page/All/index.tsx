@@ -3,10 +3,11 @@ import ThemeSwitch from "@/components/theme-switch.tsx";
 import { UserNav } from "@/components/user-nav.tsx";
 import { DataTable } from "../../components/data-table.tsx";
 import { columns } from "../../components/columns.tsx";
-import { Job } from "@/types";
+import { adaptJobs, Job } from "@/types";
 import api from "@/api/axios.ts";
 import { useEffect, useState } from "react";
 
+// 假设我们已经在某处定义了这个适配器函数
 const PAGE_SIZE = 20;
 
 export default function AllJobs() {
@@ -28,8 +29,12 @@ export default function AllJobs() {
         `/Jobs?pageNumber=${currentPage}&pageSize=${PAGE_SIZE}`
       );
 
-      const validJobs = response.data.jobs.filter(
-        (job: any) =>
+      // 使用适配器函数转换数据
+      const adaptedJobs = adaptJobs(response.data.jobs);
+
+      // 过滤有效的工作
+      const validJobs = adaptedJobs.filter(
+        (job: Job) =>
           job.id &&
           job.JobTitle &&
           job.BusinessName &&
@@ -64,14 +69,19 @@ export default function AllJobs() {
               Here&apos;s a list of your job applications!
             </p>
           </div>
-
           <div className="ml-auto flex items-center space-x-4">
             <ThemeSwitch />
             <UserNav />
           </div>
         </div>
         <div className="-mx-4 flex-1 overflow-auto px-4 py-1 lg:flex-row lg:space-x-12 lg:space-y-0">
-          <DataTable data={jobs} columns={columns} />
+          {loading ? (
+            <div>Loading...</div>
+          ) : error ? (
+            <div>Error: {error}</div>
+          ) : (
+            <DataTable data={jobs} columns={columns} />
+          )}
         </div>
       </Layout.Body>
     </Layout>
